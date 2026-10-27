@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Space — Математика ресурстары</title>
+<style>
+:root{--blue:#2457c5;--navy:#14264d;--light:#f4f7fc;--line:#dce4f2;--muted:#64748b;--white:#fff;--green:#16845b}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--light);color:var(--navy)}
+header{background:linear-gradient(120deg,#17377f,#2c65d7);color:#fff;padding:24px clamp(16px,4vw,52px) 22px}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border-radius:14px;background:#fff;color:var(--blue);display:grid;place-items:center;font-size:25px;font-weight:800}
+h1{margin:0;font-size:clamp(23px,3vw,34px)}header p{margin:8px 0 0;color:#e5edff}
+main{max-width:1200px;margin:auto;padding:24px clamp(12px,3vw,32px) 60px}
+.section-title{font-size:19px;margin:0 0 14px}.grade-nav{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:9px}
+button,.button{border:0;border-radius:11px;padding:12px 14px;font-weight:700;cursor:pointer;transition:.15s;font-size:14px}
+.grade-btn{background:#fff;border:1px solid var(--line);color:var(--navy);box-shadow:0 2px 7px #152c5510}
+button:hover,.button:hover{transform:translateY(-1px)}.grade-btn.active,.primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin-top:20px;box-shadow:0 8px 25px #18345f08}
+.panel-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+h2{font-size:23px;margin:0 0 7px}.muted{color:var(--muted);font-size:14px;line-height:1.5;margin:0}
+.subject-row,.quarter-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}
+.pill{background:#edf2fc;color:#29446f;border:1px solid #dce5f7}.pill.active{background:#e0eaff;border-color:#7196ee;color:#1947a5}
+.hidden{display:none!important}.topic-list{display:grid;gap:10px;margin-top:20px}
+.topic{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 16px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.topic h3{font-size:16px;margin:0 0 5px}.topic small{color:var(--muted)}.topic-actions{display:flex;gap:8px;flex-wrap:wrap}
+.secondary{background:#eef3fc;color:#214786}.add-btn{background:#e7f7ef;color:#126b4a}
+.resources{margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+.resources h3{margin:0 0 6px}.resource-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:15px}
+.resource-card{border:1px solid var(--line);border-radius:14px;padding:17px;background:#fbfcff;min-width:0}
+.resource-icon{font-size:25px}.resource-card h4{margin:9px 0 6px}.resource-card p{font-size:13px;color:var(--muted);line-height:1.4;overflow-wrap:anywhere}
+.resource-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.resource-actions button{padding:9px 10px;font-size:12px}
+.empty{padding:26px;text-align:center;color:var(--muted);background:#f8faff;border:1px dashed #c8d5eb;border-radius:12px;margin-top:15px}
+.admin{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin-top:24px}
+.admin h2{font-size:20px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:16px}
+label{display:block;font-size:13px;font-weight:700;color:#334155}input,select{width:100%;margin-top:7px;padding:11px 12px;border:1px solid #cbd5e1;border-radius:9px;background:#fff;font:inherit;color:var(--navy)}
+input[type=file]{font-size:13px;padding:8px}.wide{grid-column:1/-1}.form-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.notice{font-size:13px;color:#53657e;line-height:1.55;background:#f0f5ff;padding:12px 14px;border-radius:10px;margin-top:14px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:22px}
+#viewer{position:fixed;inset:0;background:#0b1730dd;z-index:10;display:flex;align-items:center;justify-content:center;padding:16px}
+.viewer-box{width:min(1000px,100%);height:min(90vh,800px);background:white;border-radius:15px;overflow:hidden;display:flex;flex-direction:column}
+.viewer-head{padding:12px 16px;background:#f2f5fb;display:flex;align-items:center;justify-content:space-between;gap:10px}.viewer-head strong{overflow-wrap:anywhere}
+#viewerFrame{border:0;width:100%;height:100%;background:#fff}.viewer-message{padding:24px;line-height:1.6}
+@media(max-width:760px){.grade-nav{grid-template-columns:repeat(4,minmax(0,1fr))}.resource-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.wide{grid-column:auto}.topic{align-items:flex-start;flex-direction:column}.panel{padding:16px}}
+@media(max-width:390px){.grade-nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="logo">∑</div><div><h1>Math Space</h1><p>5–11-сыныптарға арналған математика ресурстары</p></div></div>
+</header>
+<main>
+  <h2 class="section-title">Сыныпты таңдаңыз</h2>
+  <nav class="grade-nav" id="gradeNav" aria-label="Сыныптар"></nav>
+  <section class="panel">
+    <div class="panel-top"><div><h2 id="currentTitle">5-сынып · Математика</h2><p class="muted">Тоқсанды, пәнді және тақырыпты таңдаңыз.</p></div><button class="secondary" id="showAdminBtn">＋ Материал қосу</button></div>
+    <div id="subjectRow" class="subject-row hidden"></div>
+    <div id="quarterRow" class="quarter-row"></div>
+    <div id="topicList" class="topic-list"></div>
+    <div id="resources" class="resources hidden"></div>
+  </section>
+
+  <section class="admin" id="adminPanel">
+    <div class="panel-top"><div><h2>Материал қосу</h2><p class="muted">ҚМЖ, презентация немесе интерактивті HTML тапсырманы таңдаған тақырыпқа тіркеңіз.</p></div><button class="secondary" id="hideAdminBtn">Жабу</button></div>
+    <form id="uploadForm">
+      <div class="form-grid">
+        <label>Сынып<select id="formGrade"></select></label>
+        <label>Пән<select id="formSubject"></select></label>
+        <label>Тоқсан<select id="formQuarter"></select></label>
+        <label>Тақырып атауы<input id="formTopic" required placeholder="Мысалы: Трапецияның ауданы"></label>
+        <label>ҚМЖ — Word (.doc, .docx)<input id="wordFile" type="file" accept=".doc,.docx"></label>
+        <label>Презентация — PowerPoint (.ppt, .pptx)<input id="pptFile" type="file" accept=".ppt,.pptx"></label>
+        <label class="wide">Интерактивті тапсырма — HTML (.html, .htm)<input id="htmlFile" type="file" accept=".html,.htm"></label>
+      </div>
+      <div class="form-buttons"><button class="primary" type="submit">Материалды сақтау</button><button class="secondary" type="button" id="resetFormBtn">Тазарту</button></div>
+    </form>
+    <div class="notice"><strong>Маңызды:</strong> бұл — алғашқы прототип. Енгізілген материалдар осы браузердің жергілікті сақтау қоймасында сақталады. Браузер деректерін тазаласаңыз немесе басқа құрылғыдан кірсеңіз, файлдар көрінбеуі мүмкін. Сайтты интернетке жариялап, бірнеше құрылғыдан пайдалану үшін кейін серверлік файл сақтау жүйесін қосу қажет. HTML тапсырмалары бөлек терезеде ашылады; қауіпсіздік үшін олар негізгі сайттың ішіне тікелей енгізілмейді.</div>
+  </section>
+</main>
+<footer>Math Space · Мұғалімнің электронды әдістемелік қоры</footer>
+
+<div id="viewer" class="hidden" role="dialog" aria-modal="true" aria-label="Материалды қарау">
+  <div class="viewer-box"><div class="viewer-head"><strong id="viewerTitle">Материал</strong><button class="secondary" id="closeViewer">Жабу ✕</button></div><iframe id="viewerFrame" title="HTML тапсырмасы" sandbox="allow-scripts allow-forms allow-modals"></iframe><div id="viewerMessage" class="viewer-message hidden"></div></div>
+</div>
+<script>
+(() => {
+  const DB_KEY = "mathSpaceMaterials_v1";
+  const grades = [5,6,7,8,9,10,11];
+  const quarters = ["1-тоқсан","2-тоқсан","3-тоқсан","4-тоқсан"];
+  const subjectsFor = g => g <= 6 ? ["Математика"] : ["Алгебра","Геометрия"];
+  let state = {grade:5, subject:"Математика", quarter:"1-тоқсан", selectedTopic:null};
+  let materials = loadMaterials();
+
+  function loadMaterials(){ try { return JSON.parse(localStorage.getItem(DB_KEY) || "[]"); } catch(e) { return []; } }
+  function saveMaterials(){ try { localStorage.setItem(DB_KEY, JSON.stringify(materials)); return true; } catch(e) { alert("Сақтау мүмкін болмады. Файл көлемі браузердің сақтау шегінен асуы мүмкін."); return false; } }
+  function esc(s){ return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+  function topicKey(m){return `${m.grade}|${m.subject}|${m.quarter}|${m.topic}`;}
+  function uniqueTopics(){ const seen=new Set(); return materials.filter(m=>{const k=topicKey(m);if(seen.has(k))return false;seen.add(k);return true;}); }
+  function fillSelect(el, values, selected){el.innerHTML=values.map(v=>`<option ${v===selected?'selected':''}>${esc(v)}</option>`).join("");}
+  function init(){
+    document.getElementById("gradeNav").innerHTML=grades.map(g=>`<button class="grade-btn ${g===state.grade?'active':''}" data-grade="${g}">${g}-сынып</button>`).join("");
+    document.querySelectorAll("[data-grade]").forEach(b=>b.addEventListener("click",()=>selectGrade(Number(b.dataset.grade))));
+    fillSelect(document.getElementById("formGrade"),grades.map(g=>`${g}-сынып`),"5-сынып");
+    fillSelect(document.getElementById("formQuarter"),quarters,state.quarter);
+    updateFormSubjects(); render();
+    document.getElementById("showAdminBtn").onclick=()=>{document.getElementById("adminPanel").classList.remove("hidden");document.getElementById("adminPanel").scrollIntoView({behavior:"smooth",block:"start"});};
+    document.getElementById("hideAdminBtn").onclick=()=>document.getElementById("adminPanel").classList.add("hidden");
+    document.getElementById("formGrade").onchange=updateFormSubjects;
+    document.getElementById("uploadForm").onsubmit=handleUpload;
+    document.getElementById("resetFormBtn").onclick=()=>document.getElementById("uploadForm").reset();
+    document.getElementById("closeViewer").onclick=closeViewer;
+    document.getElementById("viewer").onclick=e=>{if(e.target.id==="viewer")closeViewer();};
+    document.addEventListener("keydown",e=>{if(e.key==="Escape")closeViewer();});
+  }
+  function selectGrade(g){state.grade=g;state.subject=subjectsFor(g)[0];state.quarter=quarters[0];state.selectedTopic=null;document.querySelectorAll("[data-grade]").forEach(b=>b.classList.toggle("active",Number(b.dataset.grade)===g));render();}
+  function render(){
+    document.getElementById("currentTitle").textContent=`${state.grade}-сынып · ${state.subject}`;
+    const sr=document.getElementById("subjectRow");
+    if(state.grade>6){sr.classList.remove("hidden");sr.innerHTML=subjectsFor(state.grade).map(s=>`<button class="pill ${s===state.subject?'active':''}" data-subject="${esc(s)}">${esc(s)}</button>`).join("");sr.querySelectorAll("button").forEach(b=>b.onclick=()=>{state.subject=b.dataset.subject;state.selectedTopic=null;render();});}else{sr.classList.add("hidden");sr.innerHTML="";}
+    const qr=document.getElementById("quarterRow");
+    qr.innerHTML=quarters.map(q=>`<button class="pill ${q===state.quarter?'active':''}" data-quarter="${q}">${q}</button>`).join("");
+    qr.querySelectorAll("button").forEach(b=>b.onclick=()=>{state.quarter=b.dataset.quarter;state.selectedTopic=null;render();});
+    const topics=uniqueTopics().filter(m=>m.grade===state.grade&&m.subject===state.subject&&m.quarter===state.quarter);
+    const list=document.getElementById("topicList");
+    if(!topics.length){list.innerHTML=`<div class="empty"><strong>Бұл бөлімге материал әлі қосылмаған.</strong><br>«＋ Материал қосу» батырмасы арқылы тақырып пен файлдарыңызды енгізіңіз.</div>`;}
+    else list.innerHTML=topics.map(m=>{const key=topicKey(m);const count=materials.filter(x=>topicKey(x)===key).length;return `<article class="topic"><div><h3>${esc(m.topic)}</h3><small>${count} материал тіркелген</small></div><div class="topic-actions"><button class="secondary" data-open-topic="${esc(m.topic)}">Материалдарды ашу</button><button class="add-btn" data-add-topic="${esc(m.topic)}">＋ Файл қосу</button></div></article>`;}).join("");
+    list.querySelectorAll("[data-open-topic]").forEach(b=>b.onclick=()=>showResources(b.dataset.openTopic));
+    list.querySelectorAll("[data-add-topic]").forEach(b=>b.onclick=()=>{document.getElementById("formGrade").value=`${state.grade}-сынып`;updateFormSubjects();document.getElementById("formSubject").value=state.subject;document.getElementById("formQuarter").value=state.quarter;document.getElementById("formTopic").value=b.dataset.addTopic;document.getElementById("adminPanel").classList.remove("hidden");document.getElementById("adminPanel").scrollIntoView({behavior:"smooth"});});
+    const r=document.getElementById("resources");r.classList.add("hidden");r.innerHTML="";
+  }
+  function showResources(topic){
+    const r=document.getElementById("resources");
+    const list=materials.filter(m=>m.grade===state.grade&&m.subject===state.subject&&m.quarter===state.quarter&&m.topic===topic);
+    const types=[["word","📄","ҚМЖ — Word"],["ppt","📊","Презентация — PowerPoint"],["html","💻","Интерактивті тапсырма — HTML"]];
+    r.classList.remove("hidden");
+    r.innerHTML=`<h3>${esc(topic)}</h3><p class="muted">Осы тақырыпқа тіркелген материалдар</p><div class="resource-grid">${types.map(([type,icon,label])=>{const items=list.filter(m=>m.type===type);return `<div class="resource-card"><div class="resource-icon">${icon}</div><h4>${label}</h4><p>${items.length?items.map(m=>esc(m.name)).join("<br>"):"Әзірге файл қосылмаған"}</p>${items.map(m=>`<div class="resource-actions">${type==="html"?`<button class="primary" data-view="${m.id}">Тапсырманы ашу</button>`:`<button class="primary" data-download="${m.id}">Жүктеп алу</button>`}<button class="secondary" data-delete="${m.id}">Өшіру</button></div>`).join("")}</div>`;}).join("")}</div>`;
+    r.querySelectorAll("[data-download]").forEach(b=>b.onclick=()=>downloadMaterial(b.dataset.download));
+    r.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>viewMaterial(b.dataset.view));
+    r.querySelectorAll("[data-delete]").forEach(b=>b.onclick=()=>deleteMaterial(b.dataset.delete,topic));
+    r.scrollIntoView({behavior:"smooth",block:"nearest"});
+  }
+  function updateFormSubjects(){const g=Number(document.getElementById("formGrade").value.split("-")[0]||5);fillSelect(document.getElementById("formSubject"),subjectsFor(g),subjectsFor(g)[0]);}
+  function fileToData(file){return new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(file);});}
+  async function handleUpload(e){
+    e.preventDefault();
+    const g=Number(document.getElementById("formGrade").value.split("-")[0]);
+    const subject=document.getElementById("formSubject").value,quarter=document.getElementById("formQuarter").value,topic=document.getElementById("formTopic").value.trim();
+    if(!topic){alert("Тақырып атауын енгізіңіз.");return;}
+    const files=[["word",document.getElementById("wordFile").files[0]],["ppt",document.getElementById("pptFile").files[0]],["html",document.getElementById("htmlFile").files[0]]].filter(x=>x[1]);
+    if(!files.length){alert("Кемінде бір файл таңдаңыз.");return;}
+    for(const [type,file] of files){
+      const ext=file.name.split(".").pop().toLowerCase();
+      const allowed={word:["doc","docx"],ppt:["ppt","pptx"],html:["html","htm"]};
+      if(!allowed[type].includes(ext)){alert("Файл түрі сәйкес емес: "+file.name);return;}
+    }
+    try{
+      const added=[];
+      for(const [type,file] of files){added.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random(),grade:g,subject,quarter,topic,type,name:file.name,data:await fileToData(file),size:file.size,addedAt:new Date().toISOString()});}
+      const previous=materials;materials=materials.concat(added);
+      if(!saveMaterials()){materials=previous;return;}
+      state={grade:g,subject,quarter,selectedTopic:topic};
+      document.querySelectorAll("[data-grade]").forEach(b=>b.classList.toggle("active",Number(b.dataset.grade)===g));
+      render();showResources(topic);
+      document.getElementById("uploadForm").reset();document.getElementById("formGrade").value=`${g}-сынып`;updateFormSubjects();document.getElementById("formSubject").value=subject;document.getElementById("formQuarter").value=quarter;document.getElementById("formTopic").value="";
+      alert("Материал сәтті сақталды!");
+    }catch(err){alert("Файлды оқу кезінде қате шықты. Қайта көріңіз.");}
+  }
+  function downloadMaterial(id){const m=materials.find(x=>x.id===id);if(!m)return;const a=document.createElement("a");a.href=m.data;a.download=m.name;document.body.appendChild(a);a.click();a.remove();}
+  function viewMaterial(id){
+    const m=materials.find(x=>x.id===id);if(!m)return;
+    const blob=new Blob([dataURLToBytes(m.data)],{type:"text/html"});
+    const url=URL.createObjectURL(blob);
+    const win=window.open(url,"_blank","noopener");
+    if(!win){alert("Жаңа терезені ашуға рұқсат беріңіз. HTML тапсырмасы бөлек терезеде ашылады.");}
+    setTimeout(()=>URL.revokeObjectURL(url),60000);
+  }
+  function dataURLToBytes(data){const base64=data.split(",")[1]||"";const raw=atob(base64);const bytes=new Uint8Array(raw.length);for(let i=0;i<raw.length;i++)bytes[i]=raw.charCodeAt(i);return bytes;}
+  function deleteMaterial(id,topic){if(!confirm("Осы файлды өшіресіз бе?"))return;materials=materials.filter(m=>m.id!==id);if(saveMaterials())showResources(topic);}
+  init();
+})();
+</script>
+</body>
+</html>
